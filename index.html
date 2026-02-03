@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Will You Be My Valentine? ❤️</title>
+  <title>For You ❤️</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .card {
       background: white;
-      padding: 40px;
+      padding: 30px;
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      max-width: 350px;
+      max-width: 380px;
       animation: pop 1s ease;
     }
 
@@ -32,31 +32,38 @@
 
     p {
       color: #555;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .heart {
-      font-size: 60px;
+      font-size: 55px;
       animation: beat 1s infinite;
-      margin: 20px 0;
+      margin: 15px 0;
+    }
+
+    .photos {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 15px 0;
     }
 
     .photos img {
-      width: 90px;
-      height: 90px;
-      margin: 5px;
-      border-radius: 12px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     button {
-      padding: 12px 25px;
+      padding: 12px 22px;
       font-size: 16px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
       margin: 10px;
-      transition: transform 0.2s;
+      position: relative;
     }
 
     .yes {
@@ -66,11 +73,6 @@
 
     .no {
       background: #ddd;
-      position: relative;
-    }
-
-    button:hover {
-      transform: scale(1.1);
     }
 
     @keyframes beat {
@@ -82,57 +84,63 @@
       from { transform: scale(0.7); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
-
-    .hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
 
+  <!-- 🎵 Background Music (plays on YES click) -->
   <audio id="bgMusic" loop>
-    <source src="https://github.com/laukikd2/Valentine-card/raw/refs/heads/main/music.mp3.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card" id="card">
-    <h1>Hey Love ❤️</h1>
-    <p>I have something special to ask you...</p>
+    <h1>Hey Ananya ❤️</h1>
+
+    <p>
+      From random talks to endless smiles,<br>
+      every moment with you feels special.<br>
+      You make my normal days beautiful 🥰
+    </p>
+
     <div class="heart">💖</div>
 
-    <!-- Photos section -->
     <div class="photos">
-      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo1.jpg" alt="Photo 1">
-      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo2.jpg" alt="Photo 2">
-      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo3.jpg" alt="Photo 3">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
     </div>
 
-    <h2>Will you be my Valentine?</h2>
+    <h2>Will you be my Valentine? 💌</h2>
+
     <button class="yes" onclick="yesClicked()">Yes 💕</button>
-    <button class="no" id="noBtn">No 🙈</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">No 🙈</button>
   </div>
 
   <script>
-    const music = document.getElementById("bgMusic");
-    const noBtn = document.getElementById("noBtn");
-
     function yesClicked() {
-      music.play(); // play the music
+      document.getElementById("bgMusic").play();
+
       document.getElementById("card").innerHTML = `
-        <h1>Yayyyy!!! 💘</h1>
-        <p>You just made my heart the happiest ❤️</p>
-        <div class="heart">🥰</div>
-        <p>Happy Valentine’s Day!</p>
+        <h1>Best Choice Ever 💘</h1>
+        <p>
+          You just made me the happiest person ❤️<br>
+          I can’t wait to make this Valentine’s<br>
+          Day unforgettable with you 🥰
+        </p>
+        <div class="heart">😍</div>
       `;
     }
 
-    // Make No button run away
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.floor(Math.random() * 160) - 80;
-      const y = Math.floor(Math.random() * 160) - 80;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    function moveNo() {
+      const btn = document.getElementById("noBtn");
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      btn.style.transform = \`translate(\${x}px, \${y}px)\`;
+    }
   </script>
 
 </body>
 </html>
+
+
 
