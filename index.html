@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be My Valentine? ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      max-width: 350px;
+      animation: pop 1s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    .heart {
+      font-size: 60px;
+      animation: beat 1s infinite;
+      margin: 20px 0;
+    }
+
+    .photos img {
+      width: 90px;
+      height: 90px;
+      margin: 5px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://github.com/laukikd2/Valentine-card/raw/refs/heads/main/music.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <h1>Hey Love ❤️</h1>
+    <p>I have something special to ask you...</p>
+    <div class="heart">💖</div>
+
+    <!-- Photos section -->
+    <div class="photos">
+      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo1.jpg" alt="Photo 1">
+      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo2.jpg" alt="Photo 2">
+      <img src="https://raw.githubusercontent.com/laukikd2/Valentine-card/main/photo3.jpg" alt="Photo 3">
+    </div>
+
+    <h2>Will you be my Valentine?</h2>
+    <button class="yes" onclick="yesClicked()">Yes 💕</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const noBtn = document.getElementById("noBtn");
+
+    function yesClicked() {
+      music.play(); // play the music
+      document.getElementById("card").innerHTML = `
+        <h1>Yayyyy!!! 💘</h1>
+        <p>You just made my heart the happiest ❤️</p>
+        <div class="heart">🥰</div>
+        <p>Happy Valentine’s Day!</p>
+      `;
+    }
+
+    // Make No button run away
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.floor(Math.random() * 160) - 80;
+      const y = Math.floor(Math.random() * 160) - 80;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+
+</body>
+</html>
